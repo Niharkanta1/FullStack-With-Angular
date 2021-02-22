@@ -1,8 +1,11 @@
 package com.training.backend.service;
 
-import com.training.backend.bean.ToDo;
 import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import com.training.backend.dto.ToDo;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,9 +13,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Slf4j
-@Service
 public class ToDoServiceHardcodedImpl implements ToDoService{
-    private static int idCounter=0;
+    private static Long idCounter=0L;
     private static List<ToDo> toDos;
 
     static {
@@ -27,7 +29,7 @@ public class ToDoServiceHardcodedImpl implements ToDoService{
     }
 
     @Override
-    public ToDo deleteToDo(int id) {
+    public ToDo deleteToDo(Long id) {
         log.debug("Deleting todo with id {}", id);
         ToDo todo = findById(id);
         if(Objects.nonNull(todo)){
@@ -36,7 +38,7 @@ public class ToDoServiceHardcodedImpl implements ToDoService{
         return todo;
     }
 
-    public ToDo findById(int id) {
+    public ToDo findById(Long id) {
         for(ToDo todo: toDos){
             if(todo.getId() == id){
                 return todo;
@@ -46,7 +48,7 @@ public class ToDoServiceHardcodedImpl implements ToDoService{
     }
 
     @Override
-    public ToDo saveToDo(ToDo toDo) {
+    public ToDo saveToDo(ToDo toDo, Boolean isCompleted) {
         if(toDo.getId() == -1 || toDo.getId() == 0){
             toDo.setId(++idCounter);
             toDo.setIsCompleted(false);

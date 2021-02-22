@@ -1,12 +1,12 @@
 package com.training.backend.service;
 
-import com.training.backend.bean.ToDo;
-
 import java.util.List;
+
+import com.training.backend.dto.ToDo;
 
 public interface ToDoService {
     public List<ToDo> findAll(String userName);
-    public ToDo deleteToDo(int id);
-    public ToDo findById(int id);
-    public ToDo saveToDo(ToDo toDo);
+    public ToDo deleteToDo(Long id);
+    public ToDo findById(Long id);
+    public ToDo saveToDo(ToDo toDo, Boolean isCompleted);
 }
