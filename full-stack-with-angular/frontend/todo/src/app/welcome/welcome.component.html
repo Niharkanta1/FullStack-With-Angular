@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>Welcome to {{ title }} app! Hi {{ user }}</h1><br>
+    Manage your To-do's <a routerLink="/todos">here</a>
+</div>
+
+<div>
+    Click here to get message from rest server&nbsp;
+    <button (click)="callHelloWorldService()" class="btn btn-success">HelloWorld</button>&nbsp;
+    <button (click)="callHelloWorldServiceWithName()" class="btn btn-success">HelloWorld with User</button><br>
+    <br>
+    <span *ngIf="restServiceMessage">{{ restServiceMessage }}</span>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Login</h1>
+    <div *ngIf="invalidLogin" class="alert alert-warning">{{ errorMessage }}</div>
+    <div *ngIf="loginForm.dirty && usernameFld.invalid" class="alert alert-warning">Please enter username</div>
+    <div *ngIf="loginForm.dirty && passwordFld.invalid" class="alert alert-warning">Please enter password</div>
+    <form (ngSubmit)="!loginForm.invalid && handleJwtAuthLogin()" #loginForm = "ngForm">
+        <table class="table">
+            <!-- value = {{ username }} single way binding -->
+            <!--[(ngModel)] = "username" two way data binding -->
+            <tr>
+                <td>User Name:</td>
+                <td><input type="name" #usernameFld="ngModel" name="username" [(ngModel)]="username" placeholder="Enter Username Here!"  required="required"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" #passwordFld="ngModel" name="password" [(ngModel)]="password" placeholder="Enter Password!" required="required"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" class="btn btn-success">Login</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
